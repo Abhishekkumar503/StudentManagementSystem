@@ -23,20 +23,18 @@ public class Student {
 	}
 
 	public void enrollCourse(String course) {
-		if(!courses.contains(course) && validCourse(course))
-		{
-			courses.add(course);
-			System.out.println("Course Enroll Successfully!");
-		}
-		else
-			System.out.println(course + " course is already enrolled!!");
+		if (validCourse(course))
+			if (!courses.contains(course) && validCourse(course)) {
+				courses.add(course);
+				System.out.println("Course Enroll Successfully!");
+			} else
+				System.out.println(course + " course is already enrolled!!");
 	}
 
 	private boolean validCourse(String course) {
-		if(course.equalsIgnoreCase("Java") || course.equalsIgnoreCase("DSA") || course.equalsIgnoreCase("Playwright"))
+		if (course.equalsIgnoreCase("Java") || course.equalsIgnoreCase("DSA") || course.equalsIgnoreCase("Playwright"))
 			return true;
-		else
-		{
+		else {
 			System.out.println("Invalid course Name!! Please select courses from the list [JAVA, DSA, PLAYWRITE]");
 			return false;
 		}
