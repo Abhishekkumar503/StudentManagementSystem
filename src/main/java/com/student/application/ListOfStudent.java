@@ -18,7 +18,10 @@ public class ListOfStudent {
 		stu.add(s1);
 		System.out.println(s1);
 		
-		System.out.println("Restult : " + findStudentbyId("S-001"));
+		System.out.println("Restult : " + findStudentbyId("S-003"));
+		System.out.println("Restult : " + exceptionHandlingBytryCatch("S-001"));
+		
+		
 
 	}
 	private static Student findStudentbyId(String id) {
@@ -28,6 +31,23 @@ public class ListOfStudent {
 				.equalsIgnoreCase(id))
 				.findFirst()
 				.orElseThrow(() -> new RuntimeException("Id not found!!"));
+		return res;
+	}
+	
+//	handling Exception by Using try and catch
+	private static Student exceptionHandlingBytryCatch(String id) {
+		// TODO Auto-generated method stub
+		Student	res = null;
+				try
+		{		res = stu.stream()
+				.filter(x -> x.getStudentId()
+				.equalsIgnoreCase(id))
+				.findFirst()
+				.orElseThrow(() -> new RuntimeException("Id not found!!"));
+		}
+				catch(RuntimeException e) {
+					System.out.println("Student not found by given Id : " + id);
+				}
 		return res;
 	}
 
